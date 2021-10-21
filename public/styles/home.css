@@ -1,13 +1,14 @@
 .container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 80% 1fr;
+  grid-template-rows: 1fr 1fr 60% 1fr;
 
   width: 100%;
   height: 100%;
 
   grid-template-areas:
     "header"
+    "register"
     "crud"
     "footer";
 }
@@ -16,20 +17,67 @@ header {
   grid-area: header;
 }
 
+.register {
+  grid-area: register;
+  display: flex;
+}
+
+.register form {
+  max-width: 112rem;
+  width: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+}
+
+form input {
+  width: 70%;
+}
+
+form button[type="submit"] {
+  padding: 1rem;
+  color: var(--white);
+  font-weight: 600;
+  border-radius: 0.8rem;
+  margin-bottom: 1.5rem;
+
+  background: var(--blue-light);
+  line-height: 0;
+
+  display: flex;
+  align-items: center;
+  padding: 1.3rem 9rem;
+}
+
+form button[type="submit"] img {
+  margin-left: 3rem;
+  width: 2rem;
+}
+
 .wrapper-crud {
   grid-area: crud;
   display: flex;
   width: 100%;
-  
+
   justify-content: center;
 }
 
 .users {
-  width: 80%;
+  width: min(112rem, 80%);
   height: 100%;
   background: var(--gray-light);
   border-radius: 8px;
-  
+
   box-shadow: 1px 2px 10px var(--gray);
 
   overflow-y: auto;
@@ -51,6 +99,31 @@ th {
 
 .users table tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+.td-buttons{
+  display: flex;
+  justify-content: space-around;
+}
+
+table .button {
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+
+  padding: 0.7rem;
+  transition: 0.3s;
+
+  background-color: transparent;
+}
+
+table .button:hover {
+  background-color: var(--gray);
+  transform: scale(1.1);
+}
+
+.button img {
+  width: 2rem;
 }
 
 footer {

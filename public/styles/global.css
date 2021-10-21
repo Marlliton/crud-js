@@ -31,8 +31,36 @@ body {
 
 body,
 input, 
-button {
+button,
+.button {
   font-size: clamp(14px, 1.6rem, 2vw);
+}
+
+input {
+  padding: .8rem;
+  border-radius: .8rem;
+
+  border: 1px solid var(--gray);
+
+  margin-bottom: 1.5rem;
+  outline: none;
+}
+
+button, .button-cancel {
+  border-radius: .8rem;
+  padding: 1.5rem 2.5rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  white-space: nowrap;
+  border-width: 0;
 }
 
 h1,

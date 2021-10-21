@@ -5,18 +5,37 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/public/styles/global.css">
   <link rel="stylesheet" href="/public/styles/home.css">
+  <link rel="stylesheet" href="/public/styles/modal.css">
   <title>Cadastro de usuários</title>
 </head>
 
 <body>
   <div class="container">
-    <header>Header</header>
+    <header>
+
+    </header>
+
+    <div class="register">
+      <form action="/register" method="POST">
+        <div>
+          <input required id="name" name="user" placeholder="Name" type="text" data-user>
+          <input required id="phone" name="tel" placeholder="Phone" type="tel">
+          <input required id="email" name="email" placeholder="E-mail" type="email">
+        </div>
+
+        <button type="submit">
+          <p>Register</p>
+          <img src="/public/images/paper.svg" alt="send registration">
+        </button>
+      </form>
+    </div>
 
     <div class="wrapper-crud">
       <div class="users">
@@ -26,32 +45,70 @@
               <th>Name</th>
               <th>E-mail</th>
               <th>Phone</th>
-              <th>Actions</th> 
+              <th>Actions</th>
             </tr>
           </thead>
 
           <tbody>
-            <tr>
-              <td>Marlliton Souza</td>
-              <td>marlliton@teste.com</td>
-              <td>99999-9999</td>
-              <td>delete update</td>
-            </tr>
 
-            <tr>
-              <td>Marlliton Souza</td>
-              <td>marlliton@teste.com</td>
-              <td>99999-9999</td>
-              <td>delete update</td>
-            </tr>
-            
+
+            <% users.forEach(user=> { %>
+              <tr>
+                <td>
+                  <%= user.name %>
+                </td>
+                <td>
+                  <%= user.email %>
+                </td>
+                <td>
+                  <%= user.phone %>
+                </td>
+
+                <td class="td-buttons">
+                  <button id="update" class="button action" data-action="update" data-userid="<%= user.id %> ">
+                    <img src="/public/images/pen.svg" alt="Remover" data-action="update" data-userid="<%= user.id %> ">
+                  </button>
+                  <button id="delete" class="button action" data-action="delete" data-userid="<%= user.id %> ">
+                    <img src="/public/images/trash.svg" alt="Editar" data-action="delete" data-userid="<%= user.id %> ">
+                  </button>
+                </td>
+              </tr>
+              <% }) %>
+
+
           </tbody>
         </table>
       </div>
     </div>
 
+    <div class="modal-wrapper">
+      <div class="modal">
+        <h2>Delete user</h2>
+
+        <p>Are you sure you want to delete this user?</p>
+        <form action="#" method="POST">
+          <div>
+            <input id="name" name="user" placeholder="Name" type="text" data-user>
+            <input id="phone" name="tel" placeholder="Phone" type="tel">
+            <input id="email" name="email" placeholder="E-mail" type="email">
+          </div>
+
+          <div>
+            <div class="button-cancel">
+              Cancel
+            </div>
+            <button class="confirm">
+              confirm
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <footer>footer</footer>
   </div>
+
+  <script type="module" src="/public/scripts/main.js"></script>
 </body>
 
 </html>
