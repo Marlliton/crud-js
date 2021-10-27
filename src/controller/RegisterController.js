@@ -4,6 +4,7 @@ module.exports = {
   async home(req, res) {
     const db = await Database();
     const users = await db.all("SELECT * FROM user");
+    users.reverse()
 
     res.render("index", { users });
   },
